@@ -1,4 +1,4 @@
-import java.util.Scanner
+
 
 object Main {
 
@@ -9,7 +9,6 @@ object Main {
     val window: Window = new Window()
 
   }
-
 
 
 }
