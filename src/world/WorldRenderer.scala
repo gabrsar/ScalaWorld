@@ -48,7 +48,10 @@ class WorldRenderer(val world: World) {
     (0 to wX).foreach(i =>
       (wY to 0 by -1).foreach(j => {
         (0 to wZ).foreach(k => {
-          world.get(i, j, k).elements.foreach(renderElement(i, j, k, _))
+          world.get(k, j, i).elements.foreach(x => {
+            renderElement(i, j, k, x)
+          })
+
         })
       })
     )
@@ -61,11 +64,12 @@ class WorldRenderer(val world: World) {
     val y = -(j * tileSize / 4) + (i * tileSize / 4) + baseY
     val z = k * (tileSize / 2)
 
-    //        val colors = List(BLUE, RED, WHITE)
-    //        graphics.setColor(colors((i + j) % colors.length))
-    //        graphics.fillRect(x, y, tileSize, tileSize)
+    //val colors = List(BLUE, RED, WHITE)
+    //graphics.setColor(colors((i + j) % colors.length))
+    //graphics.fillRect(x, y, tileSize, tileSize)
+    //graphics.drawString(s"$i,$j", x + tileSize / 4, y + tileSize / 4)
+
     g.drawImage(s, x, y - z, tileSize, tileSize, null)
-    //          graphics.drawString(s"$i,$j", x + tileSize / 4, y + tileSize / 4)
   }
 
 
@@ -100,7 +104,7 @@ object WorldRenderer {
   val grass = sprite(2)
   val wall = sprite(50)
   val water = sprite(85)
-  val land = sprite(26)
+  val land = sprite(6)
   val wtf = sprite(2, 0)
 
 
